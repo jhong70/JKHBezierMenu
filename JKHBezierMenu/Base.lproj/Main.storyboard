@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E163f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bEh-V7-pZU">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="V4j-uV-k7N">
+            <objects>
+                <viewController id="bEh-V7-pZU" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vk1-Ex-Hfy"/>
+                        <viewControllerLayoutGuide type="bottom" id="2YM-C5-DpG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YLJ-oi-XtR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JKHBezierMenu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpp-KI-GlN">
+                                <rect key="frame" x="100" y="54" width="174.5" height="31.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Joon Ki Hong" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9FS-qi-l3a">
+                                <rect key="frame" x="141" y="629" width="92" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rpp-KI-GlN" firstAttribute="top" secondItem="vk1-Ex-Hfy" secondAttribute="bottom" constant="54" id="Gtl-LE-7fJ"/>
+                            <constraint firstItem="rpp-KI-GlN" firstAttribute="centerX" secondItem="YLJ-oi-XtR" secondAttribute="centerX" id="MuR-jp-nUD"/>
+                            <constraint firstItem="9FS-qi-l3a" firstAttribute="centerX" secondItem="YLJ-oi-XtR" secondAttribute="centerX" id="cPu-Fs-04l"/>
+                            <constraint firstItem="2YM-C5-DpG" firstAttribute="top" secondItem="9FS-qi-l3a" secondAttribute="bottom" constant="20" id="yR7-vG-SeQ"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0UO-9p-oiq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="157.59999999999999" y="147.97601199400302"/>
+        </scene>
+    </scenes>
+</document>
