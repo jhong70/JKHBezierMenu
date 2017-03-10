@@ -30,13 +30,17 @@ struct JKHBezierMenuConfiguration {
     var animSpringDamping: CGFloat
     var animDuration: TimeInterval
     var shouldShowControlPoints: Bool
+    var innerControlPointRatio: CGFloat
+    var outerControlPointDistance: CGFloat
 
-    init(width: CGFloat, animSpringDamping: CGFloat=0.53, animDuration: TimeInterval=0.6, shouldShowControlPoints: Bool=false) {
+    init(width: CGFloat, animSpringDamping: CGFloat=0.53, animDuration: TimeInterval=1.0, innerControlPointRatio: CGFloat=0.70, outerControlPointDistance: CGFloat=75, shouldShowControlPoints: Bool=true) {
         
         self.width = width
         self.animSpringDamping = animSpringDamping
         self.animDuration = animDuration
         self.shouldShowControlPoints = shouldShowControlPoints
+        self.innerControlPointRatio = innerControlPointRatio
+        self.outerControlPointDistance = outerControlPointDistance
         
     }
 }
@@ -329,8 +333,7 @@ extension JKHBezierMenuContainerViewController {
         
         bezierPath.move(to: .zero)
         bezierPath.addLine(to: CGPoint(x: u3ControlPointView.dg_center(usePresentationLayerIfPossible: isAnimating).x, y: 0))
-        bezierPath.addCurve(to: u1ControlPointView.dg_center(usePresentationLayerIfPossible: isAnimating), controlPoint1: u3ControlPointView.dg_center(usePresentationLayerIfPossible: isAnimating), controlPoint2: u2ControlPointView.dg_center(usePresentationLayerIfPossible: isAnimating))
-        bezierPath.addCurve(to: l1ControlPointView.dg_center(usePresentationLayerIfPossible: isAnimating), controlPoint1: cControlPointView.dg_center(usePresentationLayerIfPossible: isAnimating), controlPoint2: l1ControlPointView.dg_center(usePresentationLayerIfPossible: isAnimating))
+        bezierPath.addCurve(to: cControlPointView.dg_center(usePresentationLayerIfPossible: isAnimating), controlPoint1: u2ControlPointView.dg_center(usePresentationLayerIfPossible: isAnimating), controlPoint2: u1ControlPointView.dg_center(usePresentationLayerIfPossible: isAnimating))
         bezierPath.addCurve(to: l3ControlPointView.dg_center(usePresentationLayerIfPossible: isAnimating), controlPoint1: l1ControlPointView.dg_center(usePresentationLayerIfPossible: isAnimating), controlPoint2: l2ControlPointView.dg_center(usePresentationLayerIfPossible: isAnimating))
         bezierPath.addLine(to: CGPoint(x: 0, y: height))
         
@@ -342,16 +345,14 @@ extension JKHBezierMenuContainerViewController {
     fileprivate func layoutControlPoints(baseWidth: CGFloat, waveWidth: CGFloat, locationY: CGFloat) {
         let minUpperY: CGFloat = 0
         let maxLowerY = view.bounds.height
-        let upperPartHeight = locationY - minUpperY
-        let lowerPartHeight = maxLowerY - locationY
         let endPointX = isMenuShowing ? config.width : 0.0
         
         u3ControlPointView.center = CGPoint(x: endPointX, y: minUpperY)
-        u2ControlPointView.center = CGPoint(x: baseWidth, y: minUpperY + upperPartHeight * 0.44)
-        u1ControlPointView.center = CGPoint(x: baseWidth + waveWidth * 0.64, y: minUpperY + upperPartHeight * 0.71)
-        cControlPointView.center  = CGPoint(x: baseWidth + waveWidth * 1.36, y: locationY)
-        l1ControlPointView.center = CGPoint(x: baseWidth + waveWidth * 0.64, y: maxLowerY - lowerPartHeight * 0.71)
-        l2ControlPointView.center = CGPoint(x: baseWidth, y: maxLowerY - (lowerPartHeight * 0.44))
+        u2ControlPointView.center = CGPoint(x: baseWidth, y: locationY * config.innerControlPointRatio)
+        u1ControlPointView.center = CGPoint(x: baseWidth + waveWidth, y: locationY - config.outerControlPointDistance)
+        cControlPointView.center  = CGPoint(x: baseWidth + waveWidth, y: locationY)
+        l1ControlPointView.center = CGPoint(x: baseWidth + waveWidth, y: locationY + config.outerControlPointDistance)
+        l2ControlPointView.center = CGPoint(x: baseWidth, y: locationY + (maxLowerY - locationY) * (1.0 - config.innerControlPointRatio))
         l3ControlPointView.center = CGPoint(x: endPointX, y: maxLowerY)
     }
     
