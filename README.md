@@ -1,5 +1,7 @@
 # JKHBezierMenu
 
+![Example gif](./example.gif)
+
 JKHBezierMenu is a quick simple proof of concept with bits and pieces of code taken from various sources made to mimic the behavior of this dribbble concept:
 
 [Sidebar animation by: Jakub Antalik](https://dribbble.com/shots/1949368-Sidebar-animation)
